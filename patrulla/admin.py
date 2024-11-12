@@ -166,4 +166,5 @@ def todas_cuentas():
 
     if not dato:
         return "Usuario no encontrado", 404 
+    
     return render_template('Administrador/Cuentas.html', usu=dato, t=totaltodas)
