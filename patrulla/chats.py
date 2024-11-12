@@ -102,7 +102,7 @@ def disconnect():
         print(f'Usuario {usuario} desconectado')
 
 #     pip install Flask Flask-SocketIO
-#     pip install eventlet == 0.37.0
+#     pip install eventlet
 #     pip install gevent
 #     pip install gevent-websocket
 #     pip install flask-socketio==5.3.1

@@ -480,3 +480,8 @@ def editar_dtsperd(id):
 if __name__ == "__main__":
     socketio.run(app, host='127.0.0.1', port=5500, debug=True)
     #app.run(host='127.0.0.1', port=5500, debug=True)
+
+
+#     @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
+#     choco install wkhtmltopdf
+#     pip install pdfkit
