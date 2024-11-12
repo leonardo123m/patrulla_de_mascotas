@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar perfil | Patrulla De Macotas</title>
+</head>
+<body>
+    {% extends "layouts/navegador.html" %}
+    {% block content %}
+    <form action="/editar_perf/{{ com[0] }} " method="post" autocomplete="off" enctype="multipart/form-data">
+        <!-- <h1>Foto de perfil</h1>
+        <img src="{{ url_for('foto_perf', id = com[0]) }}" alt=""> -->
+        <!-- <button >Editar foto de perfil</button>
+
+    <div class="foto" id="foto" style="display: none;">
+        <label for="imagen">Inserta tu foto de perfil</label>
+        <input type="file" name="foto" id="foto" onchange="previewImage(event)" /> 
+        <br>
+
+       
+        <label for="mensaje" id="previa_txt">Vista previa de tu foto de perfil</label> 
+   
+        
+        <img id="imagePreview" src="" alt="Vista previa" style="display:none; width: 100px; height: auto;" src="data:image/png;base64,{{  url_for('foto_perf', id = com[0])}}" >
+    </div> -->
+
+
+
+
+<br>      <br><br><br><br><br>  
+        <input name="nombre" type="text" value="{{ com[1] }}" required>
+        <label for="nombre">Nombre</label>
+        <br>
+        <button type="submit">aceptar</button>
+    </form>
+    <br><br><br><br><br>
+        <a href="{{ url_for('logeo_verificacion') }}">Editar información personal</a>
+        (numero de telefono, edad, correo, contraseña)
+
+        <script>
+          
+
+            function previewImage(event) {
+                const file = event.target.files[0];
+                const reader = new FileReader();
+                
+                reader.onload = function(){
+                    const imagePreview = document.getElementById('imagePreview');
+                    const txtpre = document.getElementById('previa_txt');
+    
+                    txtpre.style.display = 'block';
+    
+                    imagePreview.src = reader.result;
+                    imagePreview.style.display = 'block';
+                }
+                
+                if (file) {
+                    reader.readAsDataURL(file);
+                }
+            }
+        </script>
+    {% endblock %}
+</body>
+</html>

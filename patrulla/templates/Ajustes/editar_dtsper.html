@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar datos personales | Patrulla De Mascotas</title>
+</head>
+<body>
+    {% extends "layouts/navegador.html" %}
+    {% block content %}
+        
+        <h1>Editar datos personales</h1>
+        
+        <form action="/editar_dtsperd/{{ com[0] }} " method="post" autocomplete="off" enctype="multipart/form-data">
+            <label for="">Edad</label>
+            <input min="14" max="90" type="number"   name="edad" value="{{ com[2] }}" required>
+
+            <label for="">Numero de telefono</label>
+            <input  minlength="10" maxlength="10" type="text"  name="telefono" value="{{ com[1] }}" required>
+
+            <label for="">Contraseña</label>
+            <input type="text" name="contraseña" value="{{ com[3] }}" required>
+
+            <button>Aceptar</button>
+        </form>
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borrar perfil | Patrulla De Mascotas</title>
+</head>
+<body>
+    {% extends "layouts/navegador.html" %}
+    {% block content %}
+    <script>
+        Swal.fire({
+            title: '¿Seguro que quiere eliminar la cuenta?' ,
+            imageUrl:'https://img.lovepik.com/free-png/20211211/lovepik-frightened-cat-expression-pack-png-image_401505057_wh1200.png',
+            imageWidth: 180,  
+            imageHeight: 180,
+            customClass: { //le crea una clase al titulo, para cambiar su tamaño de letra, 
+                //ya que la letra que aparecia era muy grande 
+                title: 'custom-title' // le agregamos la clase al titulo 
+            }
+        });
+    </script>
+    {% endblock %}
+</body>
+</html>

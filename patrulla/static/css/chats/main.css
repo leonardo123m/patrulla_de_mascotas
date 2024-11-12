@@ -1,0 +1,53 @@
+body{
+    background-color: #000;
+    Color: #fff;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px;
+}
+
+#contenedorchat{
+    display: none;
+    margin-left: 30%;
+}
+
+#contchat{
+    background: #0f0c29; 
+    background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
+    background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+    border:3px, solid, #fff;
+    border-radius: 20px;
+    align-content: center;
+    Color:#fff;
+}
+
+#navegacion{
+    background: #355c7d;
+    background: -webkit-linear-gradient(to right, #355c7d, #6c5b7b, #c06c84);
+    background: linear-gradient(to right, #355c7d, #6c5b7b, #c06c84);
+    border:3px, solid, #fff;
+    border-radius:20px;
+    margin-top:10px;
+    align-content: center;
+
+}
+
+#nom_user{
+    background-color: #000;
+    Color: #fff;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 30px;
+    margin-top: 50%;
+}
+
+#envgen{
+    background: #03001e; 
+    background: -webkit-linear-gradient(to right, #fdeff9, #ec38bc, #7303c0, #03001e);
+    background: linear-gradient(to right, #fdeff9, #ec38bc, #7303c0, #03001e);
+    color: #000;
+}
+
+#usuariosdsp .list-group-item {
+    background: #0f0c29; 
+    background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
+    background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+}

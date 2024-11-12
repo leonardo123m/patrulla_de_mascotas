@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Cuenta | Patrulla De Mascotas</title>
+    <link rel="icon" href="../../static/Iconos/logo_blanco.png">
+
+</head>
+<body>
+    {% extends "layouts/Admin.html" %}
+
+    {% block content %}
+        <h1>Para actualizar cuentas</h1>
+        <form action="/editar_usu/{{ com[0] }} " method="post" autocomplete="off" enctype="multipart/form-data">
+            <center>
+                <div>
+                    <label for="nombre">Nombre</label>
+                    <input type="text" name="nombre" value="{{ com[1] }}" required>
+                </div>
+                <div>
+                    <label for="edad">Edad</label>
+                    <input type="Number" name="edad" min="14" max="90" value="{{ com[2] }}" required>
+                </div>
+                <div>
+                    <label for="tel_us">Numero de telefono</label>
+                    <input type="text" name="tel_us" id="tel_us" minlength="10" maxlength="10" value="{{ com[3] }}" required >
+                </div>
+                <div>
+                    <label for="pais">Pais</label>
+                    <select name="pais" id="pais">
+                        <option value="México">México</option>
+                    </select>
+                </div>
+                <div>
+                  
+                    <div>
+                        <label for="estado">Estado donde vive:</label>
+                        <select name="estado" id="estado" required>
+                            <!-- Opciones de estado -->
+                            <option value="" disabled>Seleccione un estado</option> <!-- Opción por defecto -->
+                            <option value="Aguascalientes" {% if com[5] == "Aguascalientes" %}selected{% endif %}>Aguascalientes</option>
+                            <option value="Baja California" {% if com[5] == "Baja California" %}selected{% endif %}>Baja California</option>
+                            <option value="Baja California Sur" {% if com[5] == "Baja California Sur" %}selected{% endif %}>Baja California Sur</option>
+                            <option value="Campeche" {% if com[5] == "Campeche" %}selected{% endif %}>Campeche</option>
+                            <option value="Chiapas" {% if com[5] == "Chiapas" %}selected{% endif %}>Chiapas</option>
+                            <option value="Chihuahua" {% if com[5] == "Chihuahua" %}selected{% endif %}>Chihuahua</option>
+                            <option value="Coahuila" {% if com[5] == "Coahuila" %}selected{% endif %}>Coahuila</option>
+                            <option value="Colima" {% if com[5] == "Colima" %}selected{% endif %}>Colima</option>
+                            <option value="Durango" {% if com[5] == "Durango" %}selected{% endif %}>Durango</option>
+                            <option value="Guanajuato" {% if com[5] == "Guanajuato" %}selected{% endif %}>Guanajuato</option>
+                            <option value="Guerrero" {% if com[5] == "Guerrero" %}selected{% endif %}>Guerrero</option>
+                            <option value="Hidalgo" {% if com[5] == "Hidalgo" %}selected{% endif %}>Hidalgo</option>
+                            <option value="Jalisco" {% if com[5] == "Jalisco" %}selected{% endif %}>Jalisco</option>
+                            <option value="México" {% if com[5] == "México" %}selected{% endif %}>México</option>
+                            <option value="Michoacán" {% if com[5] == "Michoacán" %}selected{% endif %}>Michoacán</option>
+                            <option value="Morelos" {% if com[5] == "Morelos" %}selected{% endif %}>Morelos</option>
+                            <option value="Nayarit" {% if com[5] == "Nayarit" %}selected{% endif %}>Nayarit</option>
+                            <option value="Nuevo León" {% if com[5] == "Nuevo León" %}selected{% endif %}>Nuevo León</option>
+                            <option value="Oaxaca" {% if com[5] == "Oaxaca" %}selected{% endif %}>Oaxaca</option>
+                            <option value="Puebla" {% if com[5] == "Puebla" %}selected{% endif %}>Puebla</option>
+                            <option value="Querétaro" {% if com[5] == "Querétaro" %}selected{% endif %}>Querétaro</option>
+                            <option value="Quintana Roo" {% if com[5] == "Quintana Roo" %}selected{% endif %}>Quintana Roo</option>
+                            <option value="San Luis Potosí" {% if com[5] == "San Luis Potosí" %}selected{% endif %}>San Luis Potosí</option>
+                            <option value="Sinaloa" {% if com[5] == "Sinaloa" %}selected{% endif %}>Sinaloa</option>
+                            <option value="Sonora" {% if com[5] == "Sonora" %}selected{% endif %}>Sonora</option>
+                            <option value="Tabasco" {% if com[5] == "Tabasco" %}selected{% endif %}>Tabasco</option>
+                            <option value="Tamaulipas" {% if com[5] == "Tamaulipas" %}selected{% endif %}>Tamaulipas</option>
+                            <option value="Tlaxcala" {% if com[5] == "Tlaxcala" %}selected{% endif %}>Tlaxcala</option>
+                            <option value="Veracruz" {% if com[5] == "Veracruz" %}selected{% endif %}>Veracruz</option>
+                            <option value="Yucatán" {% if com[5] == "Yucatán" %}selected{% endif %}>Yucatán</option>
+                            <option value="Zacatecas" {% if com[5] == "Zacatecas" %}selected{% endif %}>Zacatecas</option>
+                        </select>
+                    </div>
+                    
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    
+                    <input type="email" name="email" value="{{ com[6] }}" required>
+                </div>
+       
+          
+    
+    
+                <button type="submit">Aceptar</button>
+            </div>
+            </center>
+        </form>
+    {% endblock %}
+</body>
+</html>

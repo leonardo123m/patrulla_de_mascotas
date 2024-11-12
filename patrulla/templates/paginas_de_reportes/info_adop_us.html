@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    {% extends "layouts/navegador.html" %}
+    {% block content %}
+    <style>
+        .imgreg {
+            width: 50%;
+            height: 100vh;
+            object-fit: contain;
+        }
+    </style>
+    <h1>Mis reportes de adopcion</h1>
+    {% if not dts %}
+    <h1>No se encontro ningun formulario registrado</h1>
+    <style>
+        .contenido {
+            display: none;
+        }
+    </style>
+    {% endif %}
+
+    {% for i in dts %}
+    <div class="contenido">
+        <p>id del formulario {{ i.0 }} </p>
+
+        <p>id del usuario:  {{ i.1 }} </p>
+        <p>nombre o direccion:   {{i.2}}</p>
+        <p>direccion:  {{i.3}} </p>
+        <p>Estado: {{i.4}} </p>
+        <p>Numero de telefono: {{i.5}} </p>
+        <p>correo: {{i.6}} </p>
+        <p>Nombre de la masota:  {{i.7}} </p>
+        <p>Tipo de animal: {{i.8}} </p>
+        <p>Raza de mascota: {{i.9}}  </p>
+        <p>Edad de la mascota: {{i.10}} </p>
+        <p>Alto de la mascota:  {{i.11}} </p>
+        <p>Longitud de ña mascota: {{i.12}} </p>
+        <p>color de la mascota: {{i.13}} </p>
+        <p>Descripcion de la mascota: {{i.14}} </p><br>
+        {{ id }} <br>
+        <h2>Imagen de registro</h2>
+        <img class="imgreg" src="{{ url_for('foto_report', id = i.0) }}" alt="Imagen de registro">
+     <p>-----------------------------------------------------------------------------------------------</p>
+    </div>
+    {% endfor %}
+<BR></BR><BR></BR><BR></BR><BR>
+    {% endblock %}
+</body>
+</html>

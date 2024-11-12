@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Mascotas Perdidas | Patrulla de Mascotas </title>
+</head>
+<body>
+
+    {% extends "layouts/navegador.html" %}
+    {% block content %}
+ 
+    <h1>Bienveido a el formulario registra a tu mascota perdida</h1>
+    <form action="{{ url_for('buscar_m_perdida') }}" method="post" autocomplete="off" enctype="multipart/form-data">
+        <h2>Informacion del dueño.</h2>
+        <label for="nombre_due" >Nombre completo:</label>
+        <input type="text" id="nombre_due" name="nombre_due" minlength="2" maxlength="60" required><br>
+
+        <label for="direccion_due" >Dirección:</label>
+        <input type="text" id="direccion_due" name="direccion_due" minlength="2" maxlength="120" required><br>
+
+        <label for="telefono_due" >Teléfono:</label>
+        <input type="tel" id="telefono_due" name="telefono_due" minlength="10" maxlength="10" required><br>
+
+        <label for="correo_due" >Correo:</label>
+        <input type="email" id="correo_due" name="correo_due" minlength="2" maxlength="40" required><br>
+
+        <h2>Informacion de la mascota.</h2>
+        <label for="nombre_masc" >Nombre de la mascota:</label>
+        <input type="text" id="nombre_masc" name="nombre_masc" minlength="2" maxlength="30" required><br>
+
+        <label for="tip_masc" >Tipo de animal:</label>
+        <select name="tip_masc" id="tip_masc">
+            <option value="Perro">Perro</option>
+            <option value="Gato">Gato</option>
+            <option value="Conejo">Conejo</option>
+            <option value="Loro">Loro</option>
+            <option value="Periquito">Periquito </option>
+            <option value="Iguana">Iguana</option>
+            <option value="Hamsters">Hamsters</option>
+            <option value="Caninario">Caninario</option>
+            <option value="Hurón">Hurón</option>
+            <option value="Tortuga">Tortuga</option>
+            <option value="Cobaya">Cobaya</option>
+        </select>
+       
+
+        <label for="raza_masc" >Raza de la mascota:</label>
+        <input type="text" id="raza_masc" name="raza_masc" minlength="2" maxlength="30" required><br>
+
+        <label for="edad_masc" >Edad aproximada:</label>
+        <input type="number" id="edad_masc" name="edad_masc" min="0" max="21"><br>
+
+        <label for="tamaño_masc" >Tamaño de la mascota:</label><br><br>
+        <label for="">Alto aproximado de la mascota</label>
+        <select name="alto_masc" id="alto_masc">
+            <option value="5 cm a 10 cm">5 cm a 10 cm</option>
+            <option value="10 cm a 20 cm"> 10 cm a 20 cm</option>
+            <option value="20 cm a 30 cm"> 20 cm a 30 cm</option>
+            <option value="30 cm a 45 cm">30 cm a 45 cm</option>
+            <option value="45 cm a 60 cm">45 cm a 60 cm</option>
+            <option value="60 cm a 100 cm">60 cm a 100 cm</option>
+            <option value="100 cm a 200 cm">100 cm a 200 cm</option>
+        </select>
+<br>
+        <label for="">Ancho (longitud) de la mascota:</label>
+        <select name="longitud_masc" id="longitud_masc">
+            <option value="3 cm a 8 cm">3 cm a 8 cm</option>
+            <option value="8 cm a 15 cm"> 8 cm a 15 cm</option>
+            <option value="15 cm a 30 cm">15 cm a 30 cm</option>
+            <option value="20 cm a 45 cm"> 20 cm a 45 cm</option>
+            <option value="30 cm a 60 cm">30 cm a 60 cm</option>
+            <option value="40 cm a 80 cm">40 cm a 80 cm</option>
+            <option value="60 cm a 150 cm">60 cm a 150 cm</option>
+        </select>
+
+        <label for="color_masc" >Color de la mascota:</label>
+        <input type="text" id="color_masc" name="color_masc" minlength="2" maxlength="25" required><br>
+
+        <label for="sexo_masc" >Sexo de la mascota:</label>
+        <select name="sexo_masc" id="sexo_masc">
+            <option value="Macho">Macho</option>
+            <option value="Hembra">Hembra</option>
+            <option value="Hermafrodita">Hermafrodita</option>
+        </select>
+
+        <label for="desc_masc" >Descripción fisica de la mascota:</label>
+        <input type="text" id="desc_masc" name="desc_masc" minlength="2" maxlength="150"><br>
+
+        <h2>Informacion de la perdida.</h2>
+        <label for="fecha_per" >Fecha de perdida:</label>
+        <input type="date" id="fecha_per" name="fecha_per" required><br>
+
+        <label for="estado_per" >Estado de perdida:</label>
+        <select name="estado_per" id="estado_per">
+            <option value="Aguascalientes">Aguascalientes</option>
+            <option value="Baja California">Baja California</option>
+            <option value="Baja California_Sur">Baja California Sur</option>
+            <option value="Campeche">Campeche</option>
+            <option value="Chiapas">Chiapas</option>
+            <option value="Chihuahua">Chihuahua</option>
+            <option value="Coahuila">Coahuila</option>
+            <option value="Colima">Colima</option>
+            <option value="Durango">Durango</option>
+            <option value="Guanajuato">Guanajuato</option>
+            <option value="Guerrero">Guerrero</option>
+            <option value="Hidalgo">Hidalgo</option>
+            <option value="Jalisco">Jalisco</option>
+            <option value="México">México</option>
+            <option value="Michoacán">Michoacán</option>
+            <option value="Morelos">Morelos</option>
+            <option value="Nayarit">Nayarit</option>
+            <option value="Nuevo León">Nuevo León</option>
+            <option value="Oaxaca">Oaxaca</option>
+            <option value="Puebla">Puebla</option>
+            <option value="Querétaro">Querétaro</option>
+            <option value="Quintana Roo">Quintana Roo</option>
+            <option value="San Luis Potosí">San Luis Potosí</option>
+            <option value="Sinaloa">Sinaloa</option>
+            <option value="Sonora">Sonora</option>
+            <option value="Tabasco">Tabasco</option>
+            <option value="Tamaulipas">Tamaulipas</option>
+            <option value="Tlaxcala">Tlaxcala</option>
+            <option value="Veracruz">Veracruz</option>
+            <option value="Yucatán">Yucatán</option>
+            <option value="Zacatecas">Zacatecas</option>
+        </select>
+        
+
+        <label for="lugar_masc" >Lugar de pérdida:</label>
+        <input type="text" id="lugar_masc" name="lugar_masc" minlength="2" maxlength="80" required><br>
+
+        <label for="hora_masc" >Hora aproximada de perdida:</label> 
+        <input type="time" id="hora_masc" name="hora_masc" required><br>
+
+        <label for="cir_masc" >Circunstancias de perdida:</label>
+        <input type="text" id="cir_masc" name="cir_masc" minlength="2" maxlength="150" required><br>
+
+        <h2>Informacion adicional:</h2>
+        <label for="foto_masc" >Foto de mascota:</label>
+        <input type="file" id="foto_masc" name="foto_masc"><br>
+
+        <label for="collar_per" >Descripcion del collar en caso de tener:</label>
+        <input type="text" id="collar_per" name="collar_per" minlength="2" maxlength="60" ><br>
+
+        <input type="submit" value="Enviar">
+    </form>
+
+    {% if error %}
+     <div>
+        <h1 style="color: red;" >Error al validar los datos:  {{ error }} </h1>
+     </div>
+    {% endif %}
+
+    {% if men %}
+        <div> <h1 style="color: green;"> {{men}} </h1> </div>
+    {% endif %}
+    {% endblock %}
+
+    
+</body>
+</html>

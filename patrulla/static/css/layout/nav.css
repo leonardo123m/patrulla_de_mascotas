@@ -1,0 +1,299 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.header {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+  
+    background-color: rgba(0, 0, 0, 0.486);
+    padding: 0px 4%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    
+}
+
+.logo {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: beige;
+    
+}
+.logo a {
+    text-decoration: none;
+    color: white;
+    letter-spacing: 2px;
+}
+
+/* .header .lg {
+    border-right: 2px solid rgb(255, 255, 255); 
+} */
+.navigation .flecha {
+    font-size: 10px;
+    margin-left: 2px;
+}
+.navigation ul {
+    list-style: none;
+}
+
+.header .navigation ul li {
+    float: left;
+    position: relative;
+}
+
+.header .navigation ul li a {
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
+    padding: 16px;
+    display: block;
+    transition: all .2s ease;
+
+}
+.header .navigation ul li a:hover {
+    background-color: rgba(70, 116, 177, 0.541);
+
+
+}
+
+.header .navigation ul li ul {
+    position: absolute;
+    left: 0;
+    width: 250px;
+    background: rgb(44, 44, 44);
+    display: none;
+}
+
+.header .navigation ul li ul li a {
+    font-size: 14px;
+    text-transform: capitalize;
+
+}
+
+.header .navigation ul li ul li ul {
+    position: absolute;
+    top: 0;
+    left: 250px;
+}
+
+.header .navigation ul li ul li {
+    width: 100%;
+}
+
+/* .header .navigation ul li:hover >  ul {
+    display: initial;
+} */
+
+#toggle,
+.header label {
+    display: none;
+    cursor: pointer;
+}
+
+.menu i{
+    width: 45px;
+    height: 35px;
+}
+
+.foto_perfil  {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    cursor: pointer;
+    object-fit: cover;
+}
+
+@media(max-width:950px) {
+    .header label {
+        display: initial;
+    }
+
+    .header {
+        padding: 20px 10%;
+    }
+
+    .header .navigation {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: blueviolet;
+        display: none;
+    }
+
+    .header .navigation ul li {
+        width: 100%;
+    }
+    .header .navigation ul li a {
+        pad: 8px 30px 8px 10%;
+    }
+
+    .header .navigation ul li ul {
+        position: relative;
+        width: 100%;
+        left: 0;
+    }
+    .header .navigation ul li ul li {
+        background: red;
+    }
+    .header .navigation ul li ul li ul {
+        position: relative;
+        width: 100%;
+        left: 0;
+    }
+
+    #toggle:checked ~ .navigation {
+        display: block;
+    }
+}
+
+
+
+
+/*                                   FOOTER        */
+footer {
+    
+    color: white;
+    background-color: rgb(37, 37, 37);
+    
+}
+
+footer .redes {
+    background-color: rgb(56, 55, 55);
+    display: flex;
+    height: 70px;
+    line-height: 70px;
+    
+}
+footer .redes h2 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-right: 2%;
+    margin-left: 5%;
+}
+footer .redes ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+footer .redes ul  li {
+    list-style: none;
+    margin-left: 50%;
+}
+footer .redes ul  li a {
+    text-decoration: none;
+    
+}
+footer .redes ul  li a i {
+    color: white;
+    font-size: 20px;   
+    transition: .2s ;
+}
+footer .redes ul  li a:hover > i {
+    color: rgb(186, 192, 241);
+    transition: all 0.3s;
+
+    transform: scale(1.5); 
+}
+
+footer .cont {
+    display: flex;
+    width: 100%;
+}
+footer .cont .fil1,
+footer .cont .fil2 {
+    width: 50%;
+    padding: 20px;
+} 
+
+
+footer .cont .fil1 {
+    display: flex;
+}
+
+footer .cont .fil1 .cr {
+    width: 60%;
+}
+footer .cont .fil1 .mg {
+    width: 40%;
+}
+footer .cont .fil1 .mg img {
+    width: 170px;
+    height: 150px;
+    margin-top: 20%;
+}
+footer .cont .fil1 .cr h2 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-left: 60%;
+}
+
+footer .cont .fil1  ul li {
+    list-style: none;
+    line-height: 35px;
+    letter-spacing: 1px;
+} 
+
+footer .cont .fil2 h2 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+}
+footer .cont .fil2 ul li{
+    display: flex;
+    list-style: none;
+    line-height: 30px;
+}
+footer .cont .fil2 ul li a {
+    text-decoration: none;
+    color: rgb(207, 202, 202);
+    letter-spacing: 1.5px;
+    font-size: 15px;
+    padding: 5px;
+}
+footer .cont .fil2 .lis {
+    display: flex;
+}
+footer .cont .fil2 .lis .li1,
+footer .cont .fil2 .lis .li2 {
+    width: 50%;
+}
+footer .cont .fil2 ul li a:hover {
+    text-decoration: underline;
+    color: rgb(150, 214, 240);
+    transition: all 0.3s;
+}
+
+footer .fil3 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 80px;
+    padding: 15px;
+}
+footer .fil3 a {
+    text-decoration: none;
+    color: rgb(197, 191, 191);
+    font-size: 12px;
+    letter-spacing: 1.5px;
+}
+footer .fil3 a:hover {
+    color: rgb(115, 116, 117);
+    text-decoration: underline;
+}

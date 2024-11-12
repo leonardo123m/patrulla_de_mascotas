@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(0, 0, 0);
+}
+section {
+    width: 100%;
+}
+
+section  .cont {
+    display: flex;
+}
+
+section  .cont .fil1 {
+    width: 30%;
+}
+
+section  .cont .fil2 {
+    width: 70%;
+    padding: 20px;
+}
+
+
+section .cont .fil1 img {
+    width: 300px;           
+    height: auto;        
+    border-radius: 50%;    
+    object-fit: contain;  
+    margin: 2%;
+}
+
+section .cont .fil1 h1 {
+   text-align: center;
+   color: white;
+}
+
+section .cont .fil2 .botones{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+section .cont .fil2 .botones a {
+    width: 200px;
+    padding: 20px;
+    background: rgb(196, 196, 196);
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    border-radius: 15px;
+    transform: all 0.4s;
+
+}
+section .cont .fil2 .botones a:hover {
+    background-color: rgb(53, 52, 52);
+    color: white;
+    transition: all 0.4s;
+}
+
+

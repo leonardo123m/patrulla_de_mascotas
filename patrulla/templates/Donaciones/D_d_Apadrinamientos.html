@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Donaciones de apadrinamientos | Patrulla De Mascotas</title>
+</head>
+<body>
+    {% extends "layouts/navegador.html" %}
+    {% block content %}
+
+    <h1>Bienveido a el formulario, registrate para que te hagan donaciones por la masota que cuidas temporalmente </h1>
+    <form action="{{ url_for('donaciones.D_d_Apadrinamientos') }}" method="post" autocomplete="off" enctype="multipart/form-data">
+        <h2>Registra las donaciones que requieres.</h2>
+        <label for="nombre_dAPA" >Nombre completo de organizacion, refugio o persona interesada:</label>
+        <input type="text" id="nombre_dAPA" name="nombre_dAPA" minlength="2" maxlength="60" required><br>
+
+        <label for="cosas_dAPA" >Escribe las cosas que necesitas que te donen:</label>
+        <input type="text" id="cosas_dAPA" name="cosas_dAPA" minlength="5" maxlength="120" required><br>
+
+        <label for="razon_dAPA" >Escribe las razones por las que pides las donaciones:</label>
+        <input type="text" id="razon_dAPA" name="razon_dAPA" minlength="2" maxlength="120" required><br>
+
+        <label for="datos_dAPA" >Escribe los datos de tu cuenta de banco separados por una coma (nombre de banco, numero de cuenta y nombre del propietario):</label>
+        <input type="text" id="datos_dAPA" name="datos_dAPA" minlength="30" maxlength="180" required><br>
+
+        <label for="correo_dAPA" >Correo electronico:</label>
+        <input type="email" id="correo_dAPA" name="correo_dAPA" minlength="2" maxlength="120" required><br>
+
+        <label for="estado_dAPA" >Estado:</label>
+        <select name="estado_dAPA" id="estado_dAPA">
+            <option value="Aguascalientes">Aguascalientes</option>
+            <option value="Baja California">Baja California</option>
+            <option value="Baja California_Sur">Baja California Sur</option>
+            <option value="Campeche">Campeche</option>
+            <option value="Chiapas">Chiapas</option>
+            <option value="Chihuahua">Chihuahua</option>
+            <option value="Coahuila">Coahuila</option>
+            <option value="Colima">Colima</option>
+            <option value="Durango">Durango</option>
+            <option value="Guanajuato">Guanajuato</option>
+            <option value="Guerrero">Guerrero</option>
+            <option value="Hidalgo">Hidalgo</option>
+            <option value="Jalisco">Jalisco</option>
+            <option value="México">México</option>
+            <option value="Michoacán">Michoacán</option>
+            <option value="Morelos">Morelos</option>
+            <option value="Nayarit">Nayarit</option>
+            <option value="Nuevo León">Nuevo León</option>
+            <option value="Oaxaca">Oaxaca</option>
+            <option value="Puebla">Puebla</option>
+            <option value="Querétaro">Querétaro</option>
+            <option value="Quintana Roo">Quintana Roo</option>
+            <option value="San Luis Potosí">San Luis Potosí</option>
+            <option value="Sinaloa">Sinaloa</option>
+            <option value="Sonora">Sonora</option>
+            <option value="Tabasco">Tabasco</option>
+            <option value="Tamaulipas">Tamaulipas</option>
+            <option value="Tlaxcala">Tlaxcala</option>
+            <option value="Veracruz">Veracruz</option>
+            <option value="Yucatán">Yucatán</option>
+            <option value="Zacatecas">Zacatecas</option>
+        </select>
+<br>
+        <label for="tel_dAPA" >Telefono:</label>
+        <input type="text" id="tel_dAPA" name="tel_dAPA" minlength="10" maxlength="10" required><br>
+
+        <input type="submit" value="Enviar">
+    </form>
+
+        {% if error %}
+        <div><h1 style="color: red;"> {{error}}  </h1></div>
+        {% endif %}
+
+        {% if men %}
+            <div><h1 style="color: green;"> {{men}}  </h1></div>
+        {% endif %}
+
+    {% endblock %}
+</body>
+</html>

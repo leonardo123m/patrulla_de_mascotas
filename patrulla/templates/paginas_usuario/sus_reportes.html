@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis reportes | Patrulla De Mascotas</title>
+</head>
+<body>
+
+    {% extends "layouts/navegador.html" %}
+    {% block content %}
+    <div class="menu-repor">
+        <div class="donaciones">
+            <h1>donaciones hechas</h1>
+            (aqui iran los tipos de donaciones y cada pagina)
+        </div>
+        <div class="daradop">
+            <h1>dados en adopcion</h1>
+            <p>(aui iran los formularios llenados de que dio en adopcion)</p>
+            <a href="{{ url_for( 'info_adop_us' ) }}">Dados en adopcion</a>
+        </div>
+        <div class="mascper">
+            <h1>Busqueda demascota perdida</h1>
+            <p>(aui ira si publico algo sobre una mascota perdida, y si lo puede cancelar)</p>
+        </div>
+        <div class="animalherid">
+            <h1>Reportes de animal herido</h1>
+            <p>(aqui iran animales que se reportaron heridos (usuario))</p>
+        </div>
+        <div class="animcalle">
+            <h1>Reportes de animales en la calle</h1>
+            <p>(aqui iran los reportes de animales en la calle)</p>
+        </div>
+
+    </div>
+    {% endblock %}
+    
+</body>
+</html>

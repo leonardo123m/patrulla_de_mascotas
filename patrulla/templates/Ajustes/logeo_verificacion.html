@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificación | Patrulla De Mascotas</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> 
+</head>
+<body>
+
+    {% extends "layouts/navegador.html" %}
+    {% block content %}
+    {% if error %}
+    <style>
+        .custom-title {
+    font-size: 20px; 
+}
+    </style>
+    <script>
+    Swal.fire({
+        title: '{{ error }}' ,
+        imageUrl: 'https://img.freepik.com/vector-premium/lindo-gato-llorando-ilustracion-icono-vectorial-dibujos-animados_295036-2053.jpg',
+        imageWidth: 180,  
+        imageHeight: 180,
+        customClass: { //le crea una clase al titulo, para cambiar su tamaño de letra, 
+            //ya que la letra que aparecia era muy grande 
+            title: 'custom-title' // le agregamos la clase al titulo 
+        }
+    });
+    </script>
+{% endif %}
+        <h1>datos de cuenta</h1>
+
+        (aqui mostrara el correo)
+       
+        <form action="{{ url_for('logeo_verificacion') }}"  method="post" autocomplete="off">
+            <input type="text" name="contraseña">
+            <label for="contraseña">Ingrese contraseña</label><br>
+            <button>Aceptar</button>
+        </form>
+    
+    {% endblock %}
+    
+</body>
+</html>

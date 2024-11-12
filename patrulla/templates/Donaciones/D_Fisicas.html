@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Donaciones Fisicas | Patrulla De Mascotas</title>
+</head>
+<body>
+
+    {% extends "layouts/navegador.html" %}
+    {% block content %}
+
+    <h1>Bienveido a el formulario, registrate para que te hagan donaciones para tu refugio</h1>
+    <form action="{{ url_for('donaciones.D_Fisicas') }}" method="post" autocomplete="off" enctype="multipart/form-data">
+        <h2>Registra las donaciones fisicas que requieres.</h2>
+        <label for="nombre_dF" >Nombre completo de organizacion, refugio o persona interesada:</label>
+        <input type="text" id="nombre_dF" name="nombre_dF" minlength="5" maxlength="60" required><br>
+
+        <label for="cosas_dF" >Escribe las cosas que necesitas que te donen:</label>
+        <input type="text" id="cosas_dF" name="cosas_dF" minlength="5" maxlength="120" required><br>
+
+        <label for="razon_dF" >Escribe las razones por las que pides las donaciones:</label>
+        <input type="text" id="razon_dF" name="razon_dF" minlength="2" maxlength="120" required><br>
+
+        <label for="lugar_dF" >Escribe el lugar donde quieres recibir las donaciones:</label>
+        <input type="text" id="lugar_dF" name="lugar_dF" minlength="2" maxlength="180" required><br>
+
+        <label for="fecha_dF" >Fecha de inicio para la aceptacion de donaciones:</label>
+        <input type="date" id="fecha_dF" name="fecha_dF" required><br>
+
+        <label for="fecha2_dF" >Fecha de fin para la aceptacion de donaciones:</label>
+        <input type="date" id="fecha2_dF" name="fecha2_dF" required><br>
+
+        <label for="horario_dF" >Escribe el horario para recibir las donaciones:</label>
+        <input type="text" id="horario_dF" name="horario_dF" minlength="5" maxlength="80" required><br>
+
+        <label for="correo_dF" >Correo electronico:</label>
+        <input type="email" id="correo_dF" name="correo_dF" minlength="2" maxlength="120" required><br>
+
+        <label for="estado_dF" >Estado:</label>
+        <select name="estado_dF" id="estado_dF">
+            <option value="Aguascalientes">Aguascalientes</option>
+            <option value="Baja California">Baja California</option>
+            <option value="Baja California_Sur">Baja California Sur</option>
+            <option value="Campeche">Campeche</option>
+            <option value="Chiapas">Chiapas</option>
+            <option value="Chihuahua">Chihuahua</option>
+            <option value="Coahuila">Coahuila</option>
+            <option value="Colima">Colima</option>
+            <option value="Durango">Durango</option>
+            <option value="Guanajuato">Guanajuato</option>
+            <option value="Guerrero">Guerrero</option>
+            <option value="Hidalgo">Hidalgo</option>
+            <option value="Jalisco">Jalisco</option>
+            <option value="México">México</option>
+            <option value="Michoacán">Michoacán</option>
+            <option value="Morelos">Morelos</option>
+            <option value="Nayarit">Nayarit</option>
+            <option value="Nuevo León">Nuevo León</option>
+            <option value="Oaxaca">Oaxaca</option>
+            <option value="Puebla">Puebla</option>
+            <option value="Querétaro">Querétaro</option>
+            <option value="Quintana Roo">Quintana Roo</option>
+            <option value="San Luis Potosí">San Luis Potosí</option>
+            <option value="Sinaloa">Sinaloa</option>
+            <option value="Sonora">Sonora</option>
+            <option value="Tabasco">Tabasco</option>
+            <option value="Tamaulipas">Tamaulipas</option>
+            <option value="Tlaxcala">Tlaxcala</option>
+            <option value="Veracruz">Veracruz</option>
+            <option value="Yucatán">Yucatán</option>
+            <option value="Zacatecas">Zacatecas</option>
+        </select>
+        <!-- <input type="text" id="estado_don1" name="estado_don1"><br> -->
+
+        <label for="tel_dF" >Numero de telefono:</label>
+        <input type="text" id="tel_dF" name="tel_dF" minlength="10" maxlength="10" required><br>
+
+        <input type="submit" value="Enviar">
+    </form>
+        {% if error %}
+            <div>
+                  <h1 style="color: red;" >Error al validar los datos:  {{ error }} </h1>
+            </div>
+        {% endif %}
+
+        {% if men %}
+            <div> <h1 style="color: green;"> {{men}} </h1> </div>
+        {% endif %}
+      
+
+    {% endblock %}
+</body>
+</html>

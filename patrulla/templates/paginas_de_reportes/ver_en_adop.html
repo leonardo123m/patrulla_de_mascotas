@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mascotas En Adopcion | Patrulla De Mascotas</title>
+</head>
+<body>
+
+    <style>
+        .imagenxd {
+            width: 150px;
+            height: auto;
+            object-fit: cover;
+        }
+        .f_p {
+            width: 180px;
+            height: auto;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        .nm {
+            margin-left: 3%;
+        }
+       
+    </style>
+
+    {% extends "layouts/navegador.html" %}
+    {% block content %}
+    <br>
+    {% if not datos_completos %}
+        <h2>No hay formularios </h2>
+    {% endif %}
+    {% for item in datos_completos %}
+    <div class="nm">
+        <p>ID DEL QUE LO PUBLICO: {{ item.formulario[16] }}</p><br>
+
+        <p>NOMBRE DEL USUARIO QUE LO PUBLICÓ:</p><a href="">{{ item.nombre_usuario }}</a>
+        <h2>foto de perfil del usuario</h2>
+
+        <img class="f_p" src="{{ url_for('forms.obf', id_usuario=item.formulario[16]) }}" alt="Foto de perfil">
+
+        <br><br><br>
+
+        <p>ID: {{ item.formulario[0] }}</p>
+        <p>NOMBRE: {{ item.formulario[1] }}</p>
+        <p>DIRECCIÓN: {{ item.formulario[2] }}</p>
+        <p>ESTADO: {{ item.formulario[3] }}</p>
+        <p>TELEFONO: {{ item.formulario[4] }}</p>
+        <p>CORREO: {{ item.formulario[5] }}</p>
+        <p>NOMBRE DEL MASCOTA: {{ item.formulario[6] }}</p>
+        <p>TIPO: {{ item.formulario[7] }}</p>
+        <p>RAZA: {{ item.formulario[8] }}</p>
+        <p>EDAD: {{ item.formulario[9] }}</p>
+        <p>ALTO: {{ item.formulario[10] }}</p>
+        <p>LONGITUD: {{ item.formulario[11] }}</p>
+        <p>COLOR: {{ item.formulario[12] }}</p>
+        <p>SEXO: {{ item.formulario[13] }}</p>
+        <p>DESCRIPCIÓN: {{ item.formulario[14] }}</p>
+        
+
+        <h3>Foto de mascota:</h3>
+        <img class="imagenxd" src="{{ url_for('forms.obtener_f', id_adop=item.formulario[0]) }}" alt="Foto de mascota">
+
+        <hr>
+        <br><br>
+    </div>
+    {% endfor %}
+
+    {% endblock %}
+ 
+</body>
+</html>

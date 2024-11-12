@@ -1,0 +1,109 @@
+create database patrulla;
+use patrulla;
+-- ----------------------------- TABLA PARA CREAR CUENTA --------------------------------
+create table cuenta ( -- CREAR LA CUENTA
+    id_usuario int primary key auto_increment,
+    nombre varchar (40),
+    edad int,
+    tel_us varchar(10),
+    pais varchar (50),
+    estado varchar(50),
+    email varchar (40) unique,
+    contraseña varchar(70), 
+    foto blob,
+	fecha_creacion timestamp default current_timestamp
+);
+insert into cuenta value("1", "Administrador" , null ,null , 
+						"México", "Aguascalientes" , "AdministradorPDM@gmail.com", 
+                        "adminpdm15102024!!5" , null , null );
+--     ------------------------------- TABLAS DE REPORTES DE MASCOTAS -----------------------------------
+create table B_ma_perdida( -- BUSCAR MASCOTA PERDIDA
+	id_perdidas int primary key auto_increment, 
+	nombre_due varchar (60), 
+	direccion_due varchar (120), 
+	telefono_due varchar (10), 
+	correo_due varchar (40), 
+	nombre_masc varchar (30), 
+	tip_masc varchar (20), 
+	raza_masc varchar (30), 
+	edad_masc int,
+    alto_masc varchar (25),
+	longitud_masc varchar (25),
+	color_masc varchar (25),
+	sexo_masc varchar (15),
+	desc_masc varchar (150),
+	fecha_per date,
+	estado_per varchar (30),
+	lugar_masc varchar (80),
+	hora_masc time,
+	cir_masc varchar (150),
+	foto_masc blob,
+	collar_per varchar (60)
+);
+
+create table FormMascAdop( -- DISPONIBLES EN ADOPCION
+	id_adop int primary key auto_increment, 
+	nombre_ad varchar (60), 
+	direccion_ad varchar (120), 
+	estado_ad varchar (30), 
+	telefono_ad varchar (10), 
+	correo_ad varchar (40), 
+	nombre_mad varchar (30), 
+	tip_ad varchar (20), 
+	raza_ad varchar (30), 
+	edad_ad int,
+    alto_ad varchar(25),
+    longitud_ad varchar (25),
+	color_ad varchar (25),
+	sexo_ad varchar (15),
+	desc_ad varchar (150),
+	foto_ad blob
+);
+
+--  ------------------------------------- TABLAS DE DONACIONES ----------------------------- 
+
+create table D_fisicas( -- DONACIONES FISICAS
+	id_dF int primary key auto_increment, 
+	nombre_dF varchar (60), 
+	cosas_dF varchar (120), 
+	razon_dF varchar (120),
+	lugar_dF varchar(180), 
+	fecha_dF date,
+	fecha2_dF date,
+	horario_dF varchar(80),
+	correo_dF varchar (120),
+	estado_dF varchar(30), 
+	tel_dF varchar (10)
+);
+
+create table D_apadri( -- DONACIONES APADRINAMIENTO
+	id_dAPA int primary key auto_increment, 
+	nombre_dAPA varchar (60), 
+	cosas_dAPA varchar (120), 
+	razon_dAPA varchar (120),
+	datos_dAPA varchar(180), 
+	correo_dAPA varchar (120),
+	estado_dAPA varchar(30),
+	tel_dAPA varchar(10)
+);
+
+
+
+create table D_m_comu( -- DONACIONES MONETARIAS para comunidad
+	id_dMON int primary key auto_increment, 
+	nombre_dMON varchar (60), 
+	razon_dMON varchar (120), 
+	correo_dMON varchar (120),
+	estado_dMON varchar(30), 
+	tel_dMON varchar(10)
+);
+
+create table D_m_volun( -- DONACIONES MOMNETARIAS A VOLUNTARIOS
+	id_dMONV int primary key auto_increment, 
+	nombre_dMONV varchar (60), 
+	razon_dMONV varchar (120), 
+	correo_dMONV varchar (120),
+	estado_dMONV varchar(30), 
+	tel_dMONV varchar(10)
+);
+drop database patrulla;

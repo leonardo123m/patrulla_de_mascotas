@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil | Patrulla De Mascotas</title>
+    <link rel="icon" href="../../static/Iconos/logo_blanco.png">
+    <link rel="stylesheet" href="../../static/css/sobre_usuarios/info_cuenta.css">
+    <link rel="stylesheet" href=" https://smooth.ie/blogs/news/svg-wavey-transitions-between-sections">
+</head>
+<body>
+   
+   {% extends "layouts/navegador.html" %}
+   {% block content %}
+   <br><br>
+   <center>
+    <h2>Tu perfil</h2><br>
+
+   </center>
+
+   
+        {% for dato in  dts %}
+        <section>
+            <div class="cont">
+                <div class="fil1">
+                    <center>
+                        <img class="imagenxd" src="{{ url_for('layout', id_usuario=dato[0]) }}" alt="Foto de perfil"><!-- Aqui llama a 
+                            la funcion del layout (que extrae la foto de perfil, para ahorrar tiempo y no tener que volver a transquibir
+                             el codigo casi igual) --> 
+                             <br> <h1 class="nombre">  {{dato[0] }}  </h1>
+                    </center>
+                       
+                    
+                    
+                </div>
+                <div class="fil2">
+                    <div class="botones">
+                        <a href="{{ url_for('sus_reportes') }}">Sobre mis Reportes</a>
+                        <a href="#">Mis chats</a>
+                        <a href=" {{ url_for('editar_perfil') }} ">Editar mi perfil</a>
+
+                        <button>cerrar sesion</button>
+                    </div>
+                </div>
+               
+            </div>
+
+      
+        </section>
+        <br><br><br><br><br><br><br><br>
+            <!-- <p>Nombre: </p> <br>
+            <p>Edad:  {{dato[1] }} </p> <br>
+            <p>Numero de telefono:  {{dato[2] }} </p> <br>
+            <p>Pais:  {{dato[3] }} </p> <br>
+            <p>Estado:  {{dato[4] }} </p> <br>
+            <p>Email:  {{dato[5] }} </p> <br>
+            <h3>Foto de perfil:</h3>
+            <br> -->
+            
+
+        {% endfor %}
+
+           
+   {% endblock %}
+</body>
+</html>

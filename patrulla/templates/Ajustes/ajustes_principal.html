@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajustes | Página principal | Patrulla De Mascotas</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> 
+
+</head>
+<body> 
+    {% extends "layouts/navegador.html" %}
+    {% block content %}
+
+    {% if mensaje %}
+        <script>
+        Swal.fire({
+            title: '{{ mensaje }}' ,
+            imageUrl: 'https://images.vexels.com/media/users/3/205282/isolated/preview/1b50d3a4def5a341b6506664ae6821d2-lindo-conejo-feliz-plano-zanahoria.png',
+            imageWidth: 180,  
+            imageHeight: 180,
+            customClass: { //le crea una clase al titulo, para cambiar su tamaño de letra, 
+                //ya que la letra que aparecia era muy grande 
+                title: 'custom-title' // le agregamos la clase al titulo 
+            }
+        });
+        </script>
+    {% endif %}
+
+
+            <h1>Ajustes</h1>
+            <h1>Información de mis reportes</h1>
+                <a href="">Todos mis reportes</a>
+                <br><br>
+            <h1>Mi privacidad</h1>
+                <a href="">¿Cómo se maneja mi información?</a>
+                <a href="">¿Cómo se maneja mi privacidad?</a>
+<br><br><br>
+            <h1>Información de mi perfil</h1>
+                <a href="{{ url_for('editar_perfil') }}">Editar mi perfil</a><br><br><br>
+                <a href="{{ url_for('borrar_perfil') }}">Borrar cuenta</a><br><br><br>
+         
+    {% endblock %}
+</body>
+</html>

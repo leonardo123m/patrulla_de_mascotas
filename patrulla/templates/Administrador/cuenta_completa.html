@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        
+        .fper{
+            width: 500px;
+            height: auto;
+        }
+
+
+    </style>
+    {% extends "layouts/Admin.html" %}
+
+    {% block content %}
+        <a href=""></a>
+        <p>su id: {{ com[0] }} </p>
+        <p>su nombre: {{ com[1] }} </p>
+        <p>su edad: {{ com[2] }} </p>
+        <p>su numero telefonico: {{ com[3] }} </p>
+        <p>pais: {{ com[4] }} </p>
+        <p>estado: {{ com[5] }} </p>
+        <p>correo: {{ com[6] }} </p>
+        <p>contraseña: {{ com[7] }} </p>
+        <p>fecha de creacion de la cuenta: {{ com[9] }} </p>
+
+        <img class="fper" src="{{  url_for('admin_bp.obtener_foto',  id_usuario=com[0]) }}" alt="">
+
+        <a href="{{ url_for('admin_bp.editar_cuenta', id=com[0]) }}">Editar cuenta</a>
+        <a href="{{ url_for('admin_bp.eliminar_cuenta', id=com[0]) }}">Eliminar cuenta</a>
+
+    {% endblock %}
+</body>
+</html>

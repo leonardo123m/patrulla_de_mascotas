@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Adopcion de Mascotas</title>
+</head>
+<body>
+    {% extends "layouts/navegador.html" %}
+    {% block content %}
+
+    <style>
+          #previa_txt {
+            display:none ;
+        }
+    </style>
+
+        {% if error %}
+            <div>
+            <h1 style="color: red;" >Error al validar los datos:  {{ error }} </h1>
+            </div>
+        {% endif %}
+
+        {% if men %}
+            <div> <h1 style="color: green;"> {{men}} </h1> </div>
+        {% endif %}
+
+     
+
+        {% if tel_err %}
+        <style>
+                input[name = "telefono_ad"]{
+                    border: 2px solid red;
+                }
+        </style>
+        {% endif %}
+
+        {% if nom_err %}
+            <style>
+            input[name = "nombre_ad"]{
+                border: 2px solid red;
+            }
+            </style>
+        {% endif %}
+        {% if dir_err %}
+            <style>
+                input[name = "direccion_ad"]{
+                    border: 2px solid red;
+                }
+            </style>
+        {% endif %}
+        {% if em_err %}
+            <style>
+                input[name = "correo_ad"]{
+                    border: 2px solid red;
+                }
+            </style>
+        {% endif %}
+
+        {% if foto_er %}
+            <style>
+                input[name = "foto_ad"]{
+                    border: 2px solid red;
+                }
+            </style>
+        {% endif %}
+
+    <h1>Bienveido a el formulario registra a mascotas en adopción</h1><br>
+    <form action=" {{ url_for('forms.Mascotas_e_adopcion') }} "  method="post" autocomplete="off" enctype="multipart/form-data">
+        <h2>Informacion de la persona o refugio que tiene a la mascota.</h2>
+        <label for="nombre_ad" >Nombre completo de la persona o refugio:</label>
+        <input type="text" id="nombre_ad" name="nombre_ad" value="{{ nombre or '' }}" minlength="2" maxlength="60" required><br>
+
+        <label for="direccion_ad" >Dirección:</label>
+        <input type="text" id="direccion_ad" name="direccion_ad" value="{{ direccion or '' }}" minlength="2" maxlength="120" required><br>
+
+        <label for="estado_ad" >Estado:</label>
+        <!-- <input type="text" id="estado_ad" name="estado_ad"> -->
+        <select name="estado_ad" id="estado_ad" value="{{ estado or '' }}">
+            <option value="Aguascalientes">Aguascalientes</option>
+            <option value="Baja California">Baja California</option>
+            <option value="Baja California_Sur">Baja California Sur</option>
+            <option value="Campeche">Campeche</option>
+            <option value="Chiapas">Chiapas</option>
+            <option value="Chihuahua">Chihuahua</option>
+            <option value="Coahuila">Coahuila</option>
+            <option value="Colima">Colima</option>
+            <option value="Durango">Durango</option>
+            <option value="Guanajuato">Guanajuato</option>
+            <option value="Guerrero">Guerrero</option>
+            <option value="Hidalgo">Hidalgo</option>
+            <option value="Jalisco">Jalisco</option>
+            <option value="México">México</option>
+            <option value="Michoacán">Michoacán</option>
+            <option value="Morelos">Morelos</option>
+            <option value="Nayarit">Nayarit</option>
+            <option value="Nuevo León">Nuevo León</option>
+            <option value="Oaxaca">Oaxaca</option>
+            <option value="Puebla">Puebla</option>
+            <option value="Querétaro">Querétaro</option>
+            <option value="Quintana Roo">Quintana Roo</option>
+            <option value="San Luis Potosí">San Luis Potosí</option>
+            <option value="Sinaloa">Sinaloa</option>
+            <option value="Sonora">Sonora</option>
+            <option value="Tabasco">Tabasco</option>
+            <option value="Tamaulipas">Tamaulipas</option>
+            <option value="Tlaxcala">Tlaxcala</option>
+            <option value="Veracruz">Veracruz</option>
+            <option value="Yucatán">Yucatán</option>
+            <option value="Zacatecas">Zacatecas</option>
+        </select>
+        <br>
+
+        <label for="telefono_ad" >Teléfono:</label>
+        <input type="tel" id="telefono_ad" name="telefono_ad" value="{{ telefono or '' }}" minlength="10" maxlength="10" required><br>
+
+        <label for="correo_ad" >Correo:</label>
+        <input type="email" id="correo_ad" name="correo_ad" value="{{ correo or '' }}" minlength="2" maxlength="40" required><br>
+
+        <h2>Informacion de la mascota.</h2>
+
+        <label for="nombre_mad" >Nombre de la mascota:</label>
+        <input type="text" id="nombre_mad" name="nombre_mad" value="{{ nombre_mad or '' }}" minlength="2" maxlength="30" required><br>
+
+        <label for="tip_ad" >Tipo de animal:</label>
+        <select name="tip_ad" id="tip_ad" value="{{ tip_ad or '' }}">
+            <option value="Perro">Perro</option>
+            <option value="Gato">Gato</option>
+            <option value="Conejo">Conejo</option>
+            <option value="Loro">Loro</option>
+            <option value="Periquito">Periquito </option>
+            <option value="Iguana">Iguana</option>
+            <option value="Hamsters">Hamsters</option>
+            <option value="Caninario">Caninario</option>
+            <option value="Hurón">Hurón</option>
+            <option value="Tortuga">Tortuga</option>
+            <option value="Cobaya">Cobaya</option>
+        </select>
+
+        <label for="raza_ad" >Raza de la mascota:</label>
+        <input type="text" id="raza_ad" name="raza_ad" value="{{ raza_ad or '' }}" minlength="2" maxlength="30" required><br>
+
+        <label for="edad_ad" >Edad aproximada:</label>
+        <input type="number" id="edad_ad" name="edad_ad" value="{{ edad_ad or '' }}" min="0" max="21" required><br>
+
+        <label for="tamaño_ad" >Tamaño de la mascota:</label> <br><br>
+        <label for="alto">Su alto aproximado:</label>
+        <select name="alto_ad" id="alto_ad" value="{{ alto_ad or '' }}">
+            <option value="5 cm a 10 cm">5 cm a 10 cm</option>
+            <option value="10 cm a 20 cm"> 10 cm a 20 cm</option>
+            <option value="20 cm a 30 cm"> 20 cm a 30 cm</option>
+            <option value="30 cm a 45 cm">30 cm a 45 cm</option>
+            <option value="45 cm a 60 cm">45 cm a 60 cm</option>
+            <option value="60 cm a 100 cm">60 cm a 100 cm</option>
+            <option value="100 cm a 200 cm">100 cm a 200 cm</option>
+        </select>
+<br>
+        <label for="longitud">Su longitud aproximado:</label>
+        <select name="longitud_ad" id="longitud_ad" value="{{ longitud_ad or '' }}">
+            <option value="3 cm a 8 cm">3 cm a 8 cm</option>
+            <option value="8 cm a 15 cm"> 8 cm a 15 cm</option>
+            <option value="15 cm a 30 cm">15 cm a 30 cm</option>
+            <option value="20 cm a 45 cm"> 20 cm a 45 cm</option>
+            <option value="30 cm a 60 cm">30 cm a 60 cm</option>
+            <option value="40 cm a 80 cm">40 cm a 80 cm</option>
+            <option value="60 cm a 150 cm">60 cm a 150 cm</option>
+        </select>
+<br>
+        <label for="color_ad" >Color de la mascota:</label>
+        <input type="text" id="color_ad" name="color_ad" value="{{ color_ad or '' }}" minlength="2" maxlength="25" required><br>
+
+        <label for="sexo_ad" >Sexo de la mascota:</label>
+        <select name="sexo_ad" id="sexo_ad" value="{{ sexo_ad or '' }}">
+            <option value="Macho">Macho</option>
+            <option value="Hembra">Hembra</option>
+            <option value="Hermafrodita">Hermafrodita</option>
+        </select>
+
+        <label for="desc_ad" >Descripción fisica de la mascota:</label>
+        <input type="text" id="desc_ad" name="desc_ad" value="{{ desc_ad or '' }}" minlength="2" maxlength="150" required><br>
+
+        <h2>Informacion adicional.</h2>
+        <label for="foto_ad" >Foto de mascota:</label>
+        <input  type="file" id="foto_ad" name="foto_ad" onchange="previewImage(event)"><br><br>
+
+        <label for="mensaje" id="previa_txt">Vista previa de la foto de la mascota a publicar</label> <br>
+        <img id="imagePreview" alt="Vista previa" style="display:none; width: 100px; height: auto;" 
+                src="data:image/png;base64,{{ session['foto'] }}" >
+
+
+        <input type="submit" value="Enviar">
+    </form><br><br><br><br><br>
+    <script>
+        function previewImage(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            
+            reader.onload = function(){
+                const imagePreview = document.getElementById('imagePreview');
+                const txtpre = document.getElementById('previa_txt');
+
+                txtpre.style.display = 'block';
+
+                imagePreview.src = reader.result;
+                imagePreview.style.display = 'block';
+            }
+            
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+
+    {% endblock %}
+</body>
+</html>
