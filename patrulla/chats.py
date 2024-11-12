@@ -5,7 +5,7 @@ from conexion import conectar
 
 chats = Blueprint('chats', __name__)
 
-usuarios_conectados = {}
+usuarios_conectados = {} #aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 
 @socketio.on('connect')
 def conectarsocket():
