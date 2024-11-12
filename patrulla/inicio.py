@@ -17,6 +17,7 @@ from donaciones import donac
 from ajustes import ajustes
 from chats import chats
 from extensiones import socketio 
+from veterinarias import veter
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
@@ -28,6 +29,7 @@ app.register_blueprint(admin_bp)
 app.register_blueprint(donac)         
 app.register_blueprint(ajustes)
 app.register_blueprint(chats)
+app.register_blueprint(veter)
 socketio.init_app(app) 
 
 
