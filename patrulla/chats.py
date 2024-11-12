@@ -1,11 +1,13 @@
-from flask import Flask, Blueprint, render_template, request, redirect, url_for, flash, session
+from flask import Flask, Blueprint, render_template, request, redirect, url_for, flash, session, send_file
 from flask_socketio import emit
 from extensiones import socketio  # Importa socketio desde extensiones
 from conexion import conectar
+import io
+import flask
 
 chats = Blueprint('chats', __name__)
 
-usuarios_conectados = {} #aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+usuarios_conectados = {}
 
 @socketio.on('connect')
 def conectarsocket():
@@ -35,10 +37,27 @@ def obtener_usuarios():
     conn = conectar()
     cursor = conn.cursor()
     cursor.execute('SELECT nombre FROM cuenta WHERE nombre != %s', (session.get('nom_us'),))
+
     usuarios = cursor.fetchall()
+    return render_template('chats/lista_usuarios.html', usuarios=usuarios)
+
+
+
+@chats.route('/foto/<destinatario>')
+def obtener_fotous(destinatario):
+    conn = conectar()
+    cursor = conn.cursor()
+    cursor.execute('SELECT foto FROM cuenta WHERE nombre=%s', (destinatario))
+    foto = cursor.fetchone()
     cursor.close()
     conn.close()
-    return render_template('chats/lista_usuarios.html', usuarios=usuarios)
+    if foto and foto [0]:
+        return send_file(io.BytesIO(foto[0]), mimetype = 'image/jpeg')
+    else:
+        return 'error al encontrar la foto', 404
+    
+
+
 
 @chats.route('/mensajes/<destinatario>')
 def obtener_mensajes(destinatario):
@@ -80,5 +99,12 @@ def disconnect():
     usuario = session.get('nom_us')
     if usuario in usuarios_conectados:
         del usuarios_conectados[usuario]
-        
         print(f'Usuario {usuario} desconectado')
+
+#     pip install Flask Flask-SocketIO
+#     pip install eventlet == 0.37.0
+#     pip install gevent
+#     pip install gevent-websocket
+#     pip install flask-socketio==5.3.1
+#     pip install python-socketio==5.0.2
+
