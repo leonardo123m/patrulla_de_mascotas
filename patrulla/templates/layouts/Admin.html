@@ -23,6 +23,17 @@
             <ul>
                 <li><a href=" {{ url_for('admin_bp.cuentas') }} ">Ver cuentas</a></li>
 
+                <li><a class="toggle-menu2" href="">Sobre cuentas <i class="bi bi-chevron-down flecha"></i> </a>
+                    <ul>
+                       
+                        <li><a class="bus" href="  {{ url_for('admin_bp.todas_cuentas') }} ">Ver todas las cuentas</a></li>
+
+                        <li><a class="bus" href="  {{ url_for('admin_bp.cuentas') }} ">Buscar por...</a></li>
+                        <li><a class="rep" href="">Estadísticas</a></li>
+
+                    </ul>
+                </li>
+
                 <li><a class="toggle-menu4" href="">Reportes<i class="bi bi-chevron-down flecha"></i> </a>
                     <ul>
                         <li><a href="">Veterinarias</a></li>

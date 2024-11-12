@@ -25,7 +25,7 @@ app.secret_key = "clave secreta aqui"
 # Registro de los blueprints
 app.register_blueprint(forms)
 app.register_blueprint(admin_bp)
-app.register_blueprint(donac)
+app.register_blueprint(donac)         
 app.register_blueprint(ajustes)
 app.register_blueprint(chats)
 socketio.init_app(app) 

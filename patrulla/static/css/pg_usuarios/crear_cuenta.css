@@ -69,7 +69,7 @@ form {
     border-radius: 20px;
     /* border: 1px solid rgba(255, 255, 255, 0.514); */
     box-shadow: 0px 0px 1px 3px black;
-    color: white;
+    color: black;
 }
 
 form::before {
@@ -225,7 +225,7 @@ form .contenido .fila2 .input-data input:focus ~ label,
 form .contenido .fila2 .input-data input:valid ~ label {
     transform: translateY(-25px);
     font-size: 14px;
-    color: rgb(129, 201, 235);
+    color: rgb(22, 71, 94);
     font-weight: 600;
 }
 
@@ -234,7 +234,7 @@ form .contenido .fila2 .input-data label {
     position: absolute;
     bottom: 8px;
     left: 2px;
-    color: white;
+    color: black;
     pointer-events: none;
     text-transform: uppercase;
     transition: all 0.3s ease;

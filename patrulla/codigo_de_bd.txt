@@ -107,3 +107,4 @@ create table D_m_volun( -- DONACIONES MOMNETARIAS A VOLUNTARIOS
 	tel_dMONV varchar(10)
 );
 drop database patrulla;
+

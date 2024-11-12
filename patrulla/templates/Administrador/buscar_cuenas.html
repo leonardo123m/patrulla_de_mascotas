@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .imagenxd{
+        width: 350px;
+        height: 300px;
+        
+    }
+</style>
+{% extends "layouts/Admin.html" %}
+
+{% block content %}
+
+<div class="pres" >
+    <h1>Cuentas de usuarios</h1>
+</div>
+<br><br>
+
+
+<center>
+   
+    <div class="busqueda">
+        <h2>Buscar usuarios</h2>
+        <form action="{{ url_for('admin_bp.cuentas') }}"  method="post" autocomplete="off" enctype="multipart/form-data">
+            <select name="pais" id="pais">
+                <option value="México">México</option>
+            </select>
+            <select name="estado" id="estado">
+                        <option value="Aguascalientes">Aguascalientes</option>
+                        <option value="Baja California">Baja California</option>
+                        <option value="Baja California_Sur">Baja California Sur</option>
+                        <option value="Campeche">Campeche</option>
+                        <option value="Chiapas">Chiapas</option>
+                        <option value="Chihuahua">Chihuahua</option>
+                        <option value="Coahuila">Coahuila</option>
+                        <option value="Colima">Colima</option>
+                        <option value="Durango">Durango</option>
+                        <option value="Guanajuato">Guanajuato</option>
+                        <option value="Guerrero">Guerrero</option>
+                        <option value="Hidalgo">Hidalgo</option>
+                        <option value="Jalisco">Jalisco</option>
+                        <option value="México">México</option>
+                        <option value="Michoacán">Michoacán</option>
+                        <option value="Morelos">Morelos</option>
+                        <option value="Nayarit">Nayarit</option>
+                        <option value="Nuevo León">Nuevo León</option>
+                        <option value="Oaxaca">Oaxaca</option>
+                        <option value="Puebla">Puebla</option>
+                        <option value="Querétaro">Querétaro</option>
+                        <option value="Quintana Roo">Quintana Roo</option>
+                        <option value="San Luis Potosí">San Luis Potosí</option>
+                        <option value="Sinaloa">Sinaloa</option>
+                        <option value="Sonora">Sonora</option>
+                        <option value="Tabasco">Tabasco</option>
+                        <option value="Tamaulipas">Tamaulipas</option>
+                        <option value="Tlaxcala">Tlaxcala</option>
+                        <option value="Veracruz">Veracruz</option>
+                        <option value="Yucatán">Yucatán</option>
+                        <option value="Zacatecas">Zacatecas</option>
+            </select>
+            <button id="buscar">BUSCAR</button>
+        </form>
+    
+    {% if m %}
+            <h2> {{m}} </h2>
+    {% endif %}
+
+    {% if totalc %}
+        <h2>Cantidad de cuentas:  {{ totalc }} </h2>
+    {% endif %}
+        
+            <h2>cantidad de cuentas (todas): {{ tot }} </h2>
+        
+    <table>
+        <tr class="titl" >
+            <th>Nombre</th>
+            <th>Foto  de  perfil</th>
+            <th>correo</th>
+            <th>Edad</th>
+            <th> ver mas &nbsp; &nbsp; <i class="bi bi-info-circle"></i> </th>
+        </tr>
+        {% for i in usu %}
+        
+            <tr class="info">
+                <td  >{{i.1}} </td>
+                <td class="img">  <img class="imagenxd" src="{{ url_for('admin_bp.obtener_foto', id_usuario=i.0) }}" alt="Foto de perfil"> </td>
+                <td> {{i.6}} </td>
+                <td>{{i.2}}</td>
+                <td> <a href="{{ url_for('admin_bp.cuenta_completa',  id=i.0) }}">Mas informacion</a> </td>
+            </tr>
+
+        {% endfor %}
+    </table>
+
+
+
+
+
+
+
+
+
+
+</center>
+
+
+{% if not usu %}
+<center>
+   <h1>No hay usuarios registrados</h1>
+</center>
+<style>
+       table{
+           display: none;
+       }
+   </style>
+{% endif %}
+
+
+{% endblock %}
+</body>
+</html>

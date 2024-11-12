@@ -46,13 +46,13 @@ def cuentas():
       
         t = totalcuent()
         mensaje = "Cuentas de "+ estado 
-        return render_template('Administrador/Cuentas.html', usu=datos, m=mensaje, 
+        return render_template('Administrador/buscar_cuentas.html', usu=datos, m=mensaje, 
                                totalc=total_cuentas, tot = t)
     
     except:
         error = "Hubo un error al buscar las cuentas"
         print("Hubo un error al buscar las cuentas")
-        return render_template('Administrador/Cuentas.html', er = error)
+        return render_template('Administrador/buscar_cuentas.html', er = error)
     finally:
         conn.close()
         
@@ -121,7 +121,7 @@ def editar_usu(id):
                            (nombre, edad, telefono, pais, estado, email, id))
         conn.commit()
         conn.close()
-    return redirect(url_for('admin_bp.cuentas'))
+    return redirect(url_for('admin_bp.todas_cuentas'))
 
 @admin_bp.route('/eliminar_cuenta/<string:id>')
 def eliminar_cuenta(id):
@@ -132,7 +132,7 @@ def eliminar_cuenta(id):
     conn.commit()
     conn.close()
     print("Id de cuenta eliminada:"+ id)
-    return redirect(url_for('admin_bp.cuentas'))
+    return render_template('Administrador/Cuentas.html')
 
 
 @admin_bp.route('/cuenta_completa/<int:id>')
@@ -148,4 +148,22 @@ def cuenta_completa(id):
     
     return render_template('Administrador/cuenta_completa.html', com=dato)
 
+@admin_bp.route('/todas_cuentas')
+def todas_cuentas():
+    conn = pymysql.connect(host='localhost', user='root', passwd='', db='patrulla')
+    cursor = conn.cursor()
+    cursor2 =conn.cursor()
 
+    cursor.execute('''SELECT id_usuario, nombre, email, edad FROM cuenta where id_usuario >= 2''')
+    dato  = cursor.fetchall()
+  
+
+    cursor2.execute('SELECT COUNT(id_usuario) FROM cuenta')
+    datos2 = cursor2.fetchone()
+    totaltodas = datos2[0]
+    conn.close()
+    print("Cantidad de todas las cuentas: " + str(totaltodas))
+
+    if not dato:
+        return "Usuario no encontrado", 404 
+    return render_template('Administrador/Cuentas.html', usu=dato, t=totaltodas)
