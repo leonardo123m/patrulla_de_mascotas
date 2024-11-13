@@ -10,9 +10,21 @@ import jinja2
 import jsonify
 from pathlib import Path
 import os
-
+from inserts_vet import insertar_veterinarias 
 veter = flask.Blueprint('veter', __name__)
+
+
+
 
 @veter.route('/veterinarias_pri')
 def veterinarias_pri():
-    return render_template('veterinarias/veterinarias_pri.html')
+    insertar_veterinarias()
+    conn = pymysql.connect(host='localhost', user='root', passwd='', db='patrulla')
+    cursor = conn.cursor()
+    cursor.execute('''SELECT id_veterinaria ,latitud, longitud from veterinarias''')
+    datos = cursor.fetchall()
+    conn.commit()
+    cursor.close()
+    conn.close()
+    return render_template('veterinarias/veterinarias_pri.html', dts = datos)
+

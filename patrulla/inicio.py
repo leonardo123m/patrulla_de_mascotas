@@ -18,7 +18,7 @@ from ajustes import ajustes
 from chats import chats
 from extensiones import socketio 
 from veterinarias import veter
-
+from inserts_vet import inserts
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 app.secret_key = "clave secreta aqui"
@@ -30,6 +30,8 @@ app.register_blueprint(donac)
 app.register_blueprint(ajustes)
 app.register_blueprint(chats)
 app.register_blueprint(veter)
+app.register_blueprint(inserts)
+
 socketio.init_app(app) 
 
 

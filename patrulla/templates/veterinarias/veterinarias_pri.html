@@ -12,6 +12,17 @@
 
   <h1>veterinarias prueba</h1>
     <div id="map"></div>
+
+    <br><br><br>
+
+    {% for i in dts %}
+        <br><br><br>
+            {{i.0}} <!-- id_veterinaria -->
+            {{i.1}} <!-- latitud -->
+            {{i.2}} <!-- longitud -->
+       <br><br><br>
+    {% endfor %}
+        <br><br><br>
     <script src="../../static/js/veterinaria/veterinaria.js" ></script>
     <script src="https://maps.googleapis.com/maps/api/js?Key=AIzaSyCMTj9fYieIF3zGClK9nIRpYE5htl4QdD4&callback=iniciarMap" ></script>
   {% endblock %} 
