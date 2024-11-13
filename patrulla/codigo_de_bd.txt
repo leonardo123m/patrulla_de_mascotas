@@ -3,14 +3,14 @@ use patrulla;
 -- ----------------------------- TABLA PARA CREAR CUENTA --------------------------------
 create table cuenta ( -- CREAR LA CUENTA
     id_usuario int primary key auto_increment,
-    nombre varchar (40),
-    edad int,
+    nombre varchar (40) ,
+    edad int ,
     tel_us varchar(10),
     pais varchar (50),
     estado varchar(50),
-    email varchar (40) unique,
-    contraseña varchar(70), 
-    foto blob,
+    email varchar (40) unique not null,
+    contraseña varchar(255), -- para que no de problemas cpn el almacenamiento 
+    foto MEDIUMBLOB, -- Acepta almacenamiento de hasta 16mb
 	fecha_creacion timestamp default current_timestamp
 );
 insert into cuenta value("1", "Administrador" , null ,null , 
@@ -57,7 +57,8 @@ create table FormMascAdop( -- DISPONIBLES EN ADOPCION
 	color_ad varchar (25),
 	sexo_ad varchar (15),
 	desc_ad varchar (150),
-	foto_ad blob
+	foto_ad blob,
+    id_de_us int
 );
 
 --  ------------------------------------- TABLAS DE DONACIONES ----------------------------- 
@@ -106,5 +107,33 @@ create table D_m_volun( -- DONACIONES MOMNETARIAS A VOLUNTARIOS
 	estado_dMONV varchar(30), 
 	tel_dMONV varchar(10)
 );
+
+-- ----------------------------- CHATS ------------------------------------
+create table mensajes_privados(
+remitente varchar(40),
+destinatario varchar(40),
+mensaje TEXT,
+timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+-- --------------------------- VETERINARIAS ------------------------------
+create table veterinarias(
+	id_veterinaria int primary key auto_increment,
+    pais varchar(60),
+    estado varchar(60),
+    nombre_vet varchar(100), -- nombre de la veterinaria
+    referencia varchar (250), -- localizacion mas facil de encontrar (como por donde se encuentra)
+    horario varchar(60),
+    calle_avenida  varchar(60), -- puede ser una calle o una avenida
+    numero_calle  int,
+    telefono varchar(40),
+    colonia   varchar(80),
+    codigo_postal varchar(20),
+    latitud decimal(12, 8),
+    longitud decimal(12, 8),
+    imagen1 varchar(200),
+	imagen2 varchar(200),
+	imagen3 varchar(200)
+);
+
 drop database patrulla;
 
