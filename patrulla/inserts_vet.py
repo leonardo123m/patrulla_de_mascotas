@@ -11,6 +11,7 @@ def insertar_veterinarias():
         ('México', 'Monterrey', 'Veterinaria C', 'Cerca del hospital Z', '10:00 - 19:00', 'Calle Principal', 300, '555-8765', 'Colonia 3', '01500', '25.671081', '-100.309418', 'imagen1.jpg', 'imagen2.jpg', 'imagen3.jpg'),
     ]
     
+    
     # Conexion a la base de datos
     conn = pymysql.connect(host='localhost', user='root', passwd='', db='patrulla')
     cursor = conn.cursor()
