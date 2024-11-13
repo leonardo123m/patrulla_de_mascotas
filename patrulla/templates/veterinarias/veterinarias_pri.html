@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>veterinarias | Patrulla De Mascotas</title>
+    <link rel="stylesheet" href="../../static/css/veterinarias/veterinaria.css">
 </head>
 <body>
   {% extends "layouts/navegador.html" %} 
   {% block content %}
 
   <h1>veterinarias prueba</h1>
-
+    <div id="map"></div>
+    <script src="../../static/js/veterinaria/veterinaria.js" ></script>
+    <script src="https://maps.googleapis.com/maps/api/js?Key=AIzaSyCMTj9fYieIF3zGClK9nIRpYE5htl4QdD4&callback=iniciarMap" ></script>
   {% endblock %} 
 </body>
 </html>
