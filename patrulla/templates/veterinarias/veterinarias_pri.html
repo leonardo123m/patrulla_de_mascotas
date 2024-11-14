@@ -14,14 +14,28 @@
     <div id="map"></div>
 
     <br><br><br>
-
+    <!-- 21.8570633,-102.2729943,15z/ -->
+ 
     {% for i in dts %}
         <br><br><br>
+        {{i.6}} <br>
             {{i.0}} <!-- id_veterinaria --> 
           <br><br>
-            {{i.1}} <!-- latitud -->
+          <p id="latitud">{{i.1}}</p>
+          <p id="longitud">{{i.2}}</p>
+
+             <!-- latitud -->
             <br><br>
-            {{i.2}} <!-- longitud -->
+            <!-- longitud -->
+            <br><br>
+
+
+            <img src="  {{i.3}} " alt="">
+            <br>
+            <img src=" {{i.4}} " alt="">
+             <br>
+             <img src=" {{i.5}}  " alt="">
+            <br>
        <br><br><br>
     {% endfor %}
         <br><br><br>

@@ -7,13 +7,11 @@ import pymysql
 import io
 import pdfkit
 import jinja2
-from flask import jsonify
+import jsonify
 from pathlib import Path
 import os
 from inserts_vet import insertar_veterinarias 
 veter = flask.Blueprint('veter', __name__)
-
-
 
 
 
@@ -23,13 +21,11 @@ def veterinarias_pri():
     insertar_veterinarias()
     conn = pymysql.connect(host='localhost', user='root', passwd='', db='patrulla')
     cursor = conn.cursor()
-    cursor.execute('''SELECT id_veterinaria, latitud, longitud FROM veterinarias''')
+    cursor.execute('''SELECT id_veterinaria ,latitud, longitud, imagen1, imagen2, imagen3, nombre_vet from veterinarias''')
     datos = cursor.fetchall()
-    conn.commit()
-    cursor.close()
+  
     conn.close()
-    
-    # Formatear los datos como JSON
-    datos_json = [{"id": dato[0], "latitud": dato[1], "longitud": dato[2]} for dato in datos]
-    return jsonify(datos_json)
+    return render_template('veterinarias/veterinarias_pri.html', dts = datos)
+
+
 
