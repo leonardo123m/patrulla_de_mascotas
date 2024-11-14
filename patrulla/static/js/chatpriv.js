@@ -9,12 +9,18 @@ $(document).ready(function(){
     formmsgpriv.submit (e=>{ // creamos una funcion que nos detecta el momento en el que un mensaje es enviado meddiante su tipo de input submit
         e.preventDefault();
         socket.emit('envmsgpriv', {mensajepriv: msgpriv.val(), destinatario: destinatario}); // Esta funcion sirve para enviar el mensaje y el destinatario desde el cliente al servidor para que este sepa a donde/quien enviar el mensaje
+        msgpriv.val('');
     })
 
 
     socket.on('nuevo mensaje privado', function(data){
-        console.log('mensaje: ', data.mensaje, ' enviado por: ', data.remitente, ' a: ', data.destinatario);
-        chatpriv.append(`<p><strong>${data.remitente}:</strong> ${data.mensaje}</p>`);
+        if  (data.mensaje && data.remitente){
+            console.log('mensaje: ', data.mensaje, ' enviado por: ', data.remitente, ' a: ', data.destinatario);
+            chatpriv.append(`<p><strong>${data.remitente}:</strong> ${data.mensaje}</p>`);
+        }
+        else{
+            console.log('error falta informacion de usuarios')
+        }
     })
 
 

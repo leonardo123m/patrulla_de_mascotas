@@ -48,7 +48,7 @@ def login():
         conn = pymysql.connect(host='localhost', user='root', passwd='', db='patrulla' )
         cursor = conn.cursor()
         try:
-            cursor.execute('select id_usuario, email, contraseña from cuenta where email = %s and contraseña =  %s', (email, contraseña))
+            cursor.execute('select id_usuario, email, contraseña, nombre from cuenta where email = %s and contraseña =  %s', (email, contraseña))
 
             user = cursor.fetchone()
             if user and user[1] == "AdministradorPDM@gmail.com": 
@@ -63,7 +63,8 @@ def login():
                 print("############################### login exitoso #####################")
                 session['id_usuario'] = user[0] 
                 print(f"ID de usuario almacenado en sesion: {session['id_usuario']}") 
-                session ['nom_us'] = email
+                session ['nom_us'] = user[3]
+                print(f"Nombre de usuario: {session['nom_us']}")
                 return redirect(url_for('inicio'))
 
             else:

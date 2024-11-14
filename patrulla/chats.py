@@ -36,7 +36,9 @@ def chatgeneral():
 def obtener_usuarios():
     conn = conectar()
     cursor = conn.cursor()
-    cursor.execute('SELECT nombre FROM cuenta WHERE nombre != %s', (session.get('nom_us'),))
+    nom_us = session.get('nom_us')
+    cursor.execute('SELECT nombre FROM cuenta WHERE nombre != %s', (nom_us,))
+    print(nom_us)
 
     usuarios = cursor.fetchall()
     return render_template('chats/lista_usuarios.html', usuarios=usuarios)
@@ -70,28 +72,27 @@ def obtener_mensajes(destinatario):
     return render_template('chats/chatpriv.html', mensajes=mensajes, destinatario=destinatario)
 
 
-@socketio.on('envmsgpriv') # cuando el servidor encuentre el evento llamado envmsgpriv(declarado en chatpriv.js), realizara la siguiente funcion(msgpriv)
+@socketio.on('envmsgpriv')
 def msgpriv(data):
     mensajepriv = data['mensajepriv']
-    remitente = session.get('nom_us') # obtenemos el valor del mensaje, el remitente y el destinatario
+    remitente = session.get('nom_us')
     destinatario = data['destinatario']
 
     def obtener_socket_destinatario(destinatario):
         return usuarios_conectados.get(destinatario)
 
-
-    conn=conectar()
-    cursor=conn.cursor()
+    conn = conectar()
+    cursor = conn.cursor()
     cursor.execute('insert into mensajes_privados (remitente, mensaje, destinatario) values(%s, %s, %s)', (remitente, mensajepriv, destinatario))
- # Guardamos en la base de datos dichos valores
     conn.commit()
     cursor.close()
     conn.close()
 
     destinatario_socket_id = obtener_socket_destinatario(destinatario)
-    if destinatario_socket_id:
-        emit('nuevo mensaje privado', {'mensaje': mensajepriv, 'remitente': remitente}, room=destinatario_socket_id)
-        emit('nuevo mensaje privado', {'mensaje': mensajepriv, 'remitente': remitente}, room=request.sid)
+
+    emit('nuevo mensaje privado', {'mensaje': mensajepriv, 'remitente': remitente}, room=destinatario_socket_id)
+
+
 
 
 @socketio.on('disconnect')
