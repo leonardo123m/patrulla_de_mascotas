@@ -58,7 +58,8 @@ create table FormMascAdop( -- DISPONIBLES EN ADOPCION
 	sexo_ad varchar (15),
 	desc_ad varchar (150),
 	foto_ad blob,
-    id_de_us int
+    id_de_us int,
+    fecha_creacion timestamp default current_timestamp
 );
 
 --  ------------------------------------- TABLAS DE DONACIONES ----------------------------- 
@@ -142,4 +143,3 @@ create table veterinarias(
 );
 truncate table veterinaria;
 drop database patrulla;
-

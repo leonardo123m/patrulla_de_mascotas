@@ -137,7 +137,10 @@ def buscar_m_perdida():
 @forms.route('/Mascotas_e_adopcion', methods=['GET', 'POST'])
 def Mascotas_e_adopcion():    
      id_usuario = session.get('id_usuario')
+     accion = None  
      if request.method == 'POST':
+       accion = request.form['accion']
+       if accion == 'Publicar':
         #INFORMACION DE LA PERSONA
         nombre = request.form['nombre_ad']
         direccion = request.form ['direccion_ad']
@@ -259,7 +262,130 @@ def Mascotas_e_adopcion():
         finally:
             cursor.close()
             conn.close()
+     if accion == 'Crear pdf':
+            return "presiono crear pdf"
+     if accion == 'Crear pdf y publicar':
+            #INFORMACION DE LA PERSONA
+        nombre = request.form['nombre_ad']
+        direccion = request.form ['direccion_ad']
+        estado = request.form['estado_ad']
+        telefono = request.form['telefono_ad']
+        correo = request.form['correo_ad']
+        #INFORMACION DE LA MASCOTA
+        nombre_mad = request.form['nombre_mad']
+        tip_ad = request.form['tip_ad']
+        raza_ad = request.form['raza_ad']
+        edad_ad = request.form['edad_ad']
+        alto_ad = request.form['alto_ad']
+        longitud_ad = request.form ['longitud_ad']
+        color_ad = request.form ['color_ad']
+        sexo_ad = request.form['sexo_ad']
+        desc_ad = request.form['desc_ad']
+        print("Campos ingresados")
+ 
+        if not telefono.isdigit():
+            tel_err = True
+            error_message = "El telefono debe ser digito"
+            print("######################### El telefono debe ser digito #########################")
+            return render_template('paginas_de_reportes/Mascotas_e_adopcion.html', error=error_message, nombre = nombre,
+                                   direccion = direccion, estado = estado, telefono = telefono, correo = correo, 
+                                    nombre_mad = nombre_mad, tip_ad = tip_ad, raza_ad = raza_ad, edad_ad = edad_ad,
+                                      alto_ad = alto_ad, longitud_ad = longitud_ad, color_ad = color_ad,
+                                        sexo_ad = sexo_ad, desc_ad = desc_ad, tel_err = tel_err)
         
+        if nombre.isdigit():
+            error_message = "El nombre no debe ser solo digito"
+            nom_err = True
+            print("######################### El nombre no debe ser solo digito #########################")
+            return render_template('paginas_de_reportes/Mascotas_e_adopcion.html', error=error_message, nombre = nombre,
+                                   direccion = direccion, estado = estado, telefono = telefono, correo = correo, 
+                                    nombre_mad = nombre_mad, tip_ad = tip_ad, raza_ad = raza_ad, edad_ad = edad_ad,
+                                      alto_ad = alto_ad, longitud_ad = longitud_ad, color_ad = color_ad,
+                                        sexo_ad = sexo_ad, desc_ad = desc_ad, nom_err = nom_err)
+        if direccion.isdigit():
+            error_message = "La direccion no debe ser solo digito"
+            dir_err = True
+            print("######################### La direccion no debe ser solo digito #########################")
+            return render_template('paginas_de_reportes/Mascotas_e_adopcion.html', error=error_message, nombre = nombre,
+                                   direccion = direccion, estado = estado, telefono = telefono, correo = correo, 
+                                    nombre_mad = nombre_mad, tip_ad = tip_ad, raza_ad = raza_ad, edad_ad = edad_ad,
+                                      alto_ad = alto_ad, longitud_ad = longitud_ad, color_ad = color_ad,
+                                        sexo_ad = sexo_ad, desc_ad = desc_ad, dir_err = dir_err)
+        if not (correo.endswith("@gmail.com") or 
+                correo.endswith("@yahoo.com") or 
+                correo.endswith("@outlook.com") or 
+                correo.endswith("@icloud.com") or
+                correo.endswith("@protonmail.com")):
+            em_err =True
+            error_message = "El correo debe terminar con un dominio valido, por ejemplo: @gmail.com, etc"
+            print("######################### Dominio del correo no valido #########################")
+            return render_template('paginas_de_reportes/Mascotas_e_adopcion.html', error=error_message, nombre = nombre,
+                                   direccion = direccion, estado = estado, telefono = telefono, correo = correo, 
+                                    nombre_mad = nombre_mad, tip_ad = tip_ad, raza_ad = raza_ad, edad_ad = edad_ad,
+                                      alto_ad = alto_ad, longitud_ad = longitud_ad, color_ad = color_ad,
+                                        sexo_ad = sexo_ad, desc_ad = desc_ad, em_err = em_err)
+        #VALIDACION DE FOTO
+        if 'foto_ad' in request.files and request.files['foto_ad'].filename:#Se valida si se agrego una foto o no
+            foto = request.files['foto_ad'].read()
+            print("############################## Si selecciono una foto ######################")        
+        else:
+            error_message = "No se agrego una foto"
+            foto_er = True
+            print("######################### No hay foto #########################")
+            return render_template('paginas_de_reportes/Mascotas_e_adopcion.html', error=error_message, nombre = nombre,
+                                   direccion = direccion, estado = estado, telefono = telefono, correo = correo, 
+                                    nombre_mad = nombre_mad, tip_ad = tip_ad, raza_ad = raza_ad, edad_ad = edad_ad,
+                                      alto_ad = alto_ad, longitud_ad = longitud_ad, color_ad = color_ad,
+                                        sexo_ad = sexo_ad, desc_ad = desc_ad, foto_er = foto_er)
+        
+        if foto:#Validacion del tipo de dato de la imagen y que no pase de los 2mb 
+                if len(foto) > 2 * 1024 * 1024:  # Maximo 2mb de almacenamiento
+                    error_message = "La foto de la mascota  no debe exceder los 2 MB."
+                    print("##### Foto muy grande #####")
+                    foto_er = True
+                    return render_template('paginas_de_reportes/Mascotas_e_adopcion.html', error=error_message, nombre = nombre,
+                                   direccion = direccion, estado = estado, telefono = telefono, correo = correo, 
+                                    nombre_mad = nombre_mad, tip_ad = tip_ad, raza_ad = raza_ad, edad_ad = edad_ad,
+                                      alto_ad = alto_ad, longitud_ad = longitud_ad, color_ad = color_ad,
+                                        sexo_ad = sexo_ad, desc_ad = desc_ad, foto_er = foto_er)
+
+                # Validacion del tipo MIME para asegurar que sea una imagen y no un archivo cualquiera
+                if not request.files['foto_ad'].content_type.startswith('image/'):
+                    error_message = "El archivo debe ser una imagen: (jpg, png, jiff.)"
+                    print("##### Tipo de archivo no válido #####")
+                    foto_er = True
+                    return render_template('paginas_de_reportes/Mascotas_e_adopcion.html', error=error_message, nombre = nombre,
+                                   direccion = direccion, estado = estado, telefono = telefono, correo = correo, 
+                                    nombre_mad = nombre_mad, tip_ad = tip_ad, raza_ad = raza_ad, edad_ad = edad_ad,
+                                      alto_ad = alto_ad, longitud_ad = longitud_ad, color_ad = color_ad,
+                                        sexo_ad = sexo_ad, desc_ad = desc_ad, foto_er = foto_er)
+        
+        conn = pymysql.connect(host='localhost', user='root', passwd='', db='patrulla' )
+        cursor = conn.cursor()
+        try:
+            cursor.execute(
+                '''insert into FormMascAdop (
+                                    nombre_ad, direccion_ad, estado_ad, telefono_ad, 
+                                    correo_ad, nombre_mad, tip_ad, raza_ad, edad_ad,
+                                    alto_ad,  longitud_ad, color_ad, sexo_ad, desc_ad,
+                                    foto_ad, id_de_us
+                                    ) values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+                                ''',
+                            (nombre, direccion, estado,telefono, correo, nombre_mad, tip_ad,
+                            raza_ad, edad_ad, alto_ad, longitud_ad, color_ad, sexo_ad, desc_ad, foto, id_usuario, ))
+            conn.commit()
+            
+            print(f"ID de usuario almacenado en el formulario para dar en adopcion: {session['id_usuario']}") 
+
+            print("-----------se mandaron los datos correctamente------------------")
+            mensaje = "Se mandaron los datos correctamente"
+            return render_template('paginas_de_reportes/Mascotas_e_adopcion.html', men=mensaje)
+        except Exception as e:
+            print("Error al insertar en la base de datos:", e)
+            # conn.rollback() 
+        finally:
+            cursor.close()
+            conn.close()
      return render_template('paginas_de_reportes/Mascotas_e_adopcion.html')
 
 
@@ -275,7 +401,7 @@ def ver_m_adop():
     # Primera consulta para obtener los datos del formulario de adopción
     cursor.execute(''' SELECT id_adop, nombre_ad, direccion_ad, estado_ad, telefono_ad, correo_ad,
                         nombre_mad, tip_ad, raza_ad, edad_ad, alto_ad, longitud_ad, color_ad, sexo_ad,
-                        desc_ad, foto_ad, id_de_us FROM FormMascAdop ''')
+                        desc_ad, foto_ad, id_de_us, fecha_creacion FROM FormMascAdop ''')
 
     datos = cursor.fetchall()
 
