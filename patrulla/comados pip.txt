@@ -3,3 +3,4 @@ pip install flask_socketio
 pip install jsonify
 pip install mysql-connector
 pip install gevent-websocket
+pip instal pdfkit
