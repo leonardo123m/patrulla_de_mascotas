@@ -17,6 +17,7 @@ $(document).ready(function(){
         if  (data.mensaje && data.remitente){
             console.log('mensaje: ', data.mensaje, ' enviado por: ', data.remitente, ' a: ', data.destinatario);
             chatpriv.append(`<p><strong>${data.remitente}:</strong> ${data.mensaje}</p>`);
+            chatpriv.append(`<p><strong>${data.desinatario}:</strong> ${data.mensaje}</p>`);
         }
         else{
             console.log('error falta informacion de usuarios')

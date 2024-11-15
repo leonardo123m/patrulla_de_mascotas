@@ -90,7 +90,7 @@ def msgpriv(data):
 
     destinatario_socket_id = obtener_socket_destinatario(destinatario)
 
-    emit('nuevo mensaje privado', {'mensaje': mensajepriv, 'remitente': remitente}, room=destinatario_socket_id)
+    emit('nuevo mensaje privado', {'mensaje': mensajepriv, 'remitente': remitente, 'destinatario': destinatario}, room=destinatario_socket_id)
 
 
 
