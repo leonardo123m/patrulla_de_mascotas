@@ -80,7 +80,6 @@ def msgpriv(data):
 
     def obtener_socket_destinatario(destinatario):
         return usuarios_conectados.get(destinatario)
-
     conn = conectar()
     cursor = conn.cursor()
     cursor.execute('insert into mensajes_privados (remitente, mensaje, destinatario) values(%s, %s, %s)', (remitente, mensajepriv, destinatario))
@@ -89,8 +88,8 @@ def msgpriv(data):
     conn.close()
 
     destinatario_socket_id = obtener_socket_destinatario(destinatario)
-
     emit('nuevo mensaje privado', {'mensaje': mensajepriv, 'remitente': remitente, 'destinatario': destinatario}, room=destinatario_socket_id)
+    emit('nuevo mensaje privado', {'mensaje': mensajepriv, 'remitente': remitente, 'destinatario': destinatario}, room=request.sid)
 
 
 
